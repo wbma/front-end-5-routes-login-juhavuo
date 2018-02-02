@@ -17,6 +17,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private mediaService: MediaService) {
 
+
+  }
+
+  register() {
     this.mediaService.register(this.user).subscribe(response => {
       console.log(response);
       this.mediaService.username = this.user.username;
@@ -24,6 +28,7 @@ export class RegisterComponent implements OnInit {
       this.mediaService.login();
     });
   }
+
   ngOnInit() {
   }
 

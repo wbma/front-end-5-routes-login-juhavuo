@@ -10,6 +10,9 @@ export class MediaService {
   password: string;
   email: string;
   status: string;
+  options = {
+    headers: new HttpHeaders().set('Content-Type', 'application/json')
+  };
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
 
@@ -40,6 +43,8 @@ export class MediaService {
       password: this.password
     };
 
+
+
     const settings = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
@@ -55,7 +60,6 @@ export class MediaService {
   }
 
   public getUserData() {
-    console.log('piss off data');
     const settings = {
       headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
     };
@@ -63,8 +67,13 @@ export class MediaService {
     return this.http.get(this.apiUrl + '/users/user', settings);
   }
 
+  logout() {
+
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
+  }
+
   public register(user: User) {
-    console.log('screw you');
     /*
     const rbody = {
       username: this.username,
@@ -72,7 +81,7 @@ export class MediaService {
       email: this.email
     };*/
 
-    return this.http.post(this.apiUrl + '/users', user);
+    return this.http.post(this.apiUrl + '/users', user, this.options);
   }
 
 }

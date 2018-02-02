@@ -1,6 +1,9 @@
 <form>
-  <input type="text" ngModel="user.username" name="username" placeholder="enter username">
-  <input type="password" ngModel="user.password" name="password" placeholder="enter password">
-  <input type="email" ngModel="user.email" name="email" placeholder="enter email">
+  <p>Enter username:</p>
+  <input type="text" [(ngModel)]="user.username" name="username">
+  <p>Enter password:</p>
+  <input type="password" [(ngModel)]="user.password" name="password">
+  <p>Enter email address:</p>
+  <input type="email" [(ngModel)]="user.email" name="email">
 <button (click)="register()">Register to server</button>
 </form>
