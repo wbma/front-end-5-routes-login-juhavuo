@@ -32,16 +32,13 @@ export class MediaService {
       }
     }*/
 
-  public login(uname: string, passwrd: string) {
+  public login() {
 
 
     const body = {
       username: this.username,
       password: this.password
     };
-
-    console.log('uname: ' + uname);
-    console.log('pwd: ' + passwrd);
 
     const settings = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -75,14 +72,7 @@ export class MediaService {
       email: this.email
     };*/
 
-    this.http.post(this.apiUrl + '/users', user).subscribe(data => {
-      console.log(data);
-      this.login(user.username, user.password);
-      return data;
-    }, error => {
-      console.log('I am error');
-      return error;
-    });
+    return this.http.post(this.apiUrl + '/users', user);
   }
 
 }

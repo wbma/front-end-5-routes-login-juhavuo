@@ -16,20 +16,14 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(private mediaService: MediaService) {
-  }
-
-  register() {
-    console.log(this.user);
 
     this.mediaService.register(this.user).subscribe(response => {
       console.log(response);
       this.mediaService.username = this.user.username;
       this.mediaService.password = this.user.password;
-      this.mediaService.login(this.user.username, this.user.password);
+      this.mediaService.login();
     });
-
   }
-
   ngOnInit() {
   }
 
