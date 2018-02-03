@@ -19,22 +19,6 @@ export class MediaService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  /*
-    private formValidation(): boolean {
-      if (!this.username) {
-        alert('please check that all required fields have been filled');
-        return false;
-      } else if (!this.password) {
-        alert('please check that all required fields have been filled');
-        return false;
-      } else if (!this.email) {
-        alert('please check that all required fields have been filled');
-        return false;
-      } else {
-        return true;
-      }
-    }*/
-
   public login() {
 
 
@@ -44,12 +28,13 @@ export class MediaService {
     };
 
 
-
     const settings = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
 
     this.http.post(this.apiUrl + '/login', body, settings).subscribe(response => {
+      console.log(this.username);
+      console.log(this.password);
       console.log(response['token']);
       localStorage.setItem('token', response['token']);
       this.router.navigate(['front']);
@@ -74,12 +59,6 @@ export class MediaService {
   }
 
   public register(user: User) {
-    /*
-    const rbody = {
-      username: this.username,
-      password: this.password,
-      email: this.email
-    };*/
 
     return this.http.post(this.apiUrl + '/users', user, this.options);
   }

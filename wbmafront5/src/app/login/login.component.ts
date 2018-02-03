@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('token') !== null) {
       this.mediaService.getUserData().subscribe(response => {
-        this.router.navigate(['front']);
+        // this.router.navigate(['front']);
+        console.log(this.mediaService.status);
       }, (error: HttpErrorResponse) => {
         console.log(error);
-        this.router.navigate(['login']);
       });
     }
   }
